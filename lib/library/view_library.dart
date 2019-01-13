@@ -4,21 +4,20 @@ import '../book/book.dart';
 
 class ViewLibrary extends StatelessWidget {
   final String libraryName;
-  List<Book> libraryBooks;
-  ViewLibrary(this.libraryName) {
-    libraryBooks = getBooksInLibrary(this.libraryName);
-  }
+ 
+  ViewLibrary(this.libraryName);
 
   @override
   Widget build(BuildContext context) {
+     List<Book> libraryBooks = getBooksInLibrary(this.libraryName);
     return Scaffold(
         appBar: AppBar(title: Text(this.libraryName)),
         body: ListView.builder(
             padding: EdgeInsets.all(8.0),
             itemExtent: 20.0,
             itemBuilder: (BuildContext context, int index) {
-              if (index < this.libraryBooks.length) {
-                return Text(this.libraryBooks[index].title);
+              if (index < libraryBooks.length) {
+                return Text(libraryBooks[index].title);
               }
             }));
   }

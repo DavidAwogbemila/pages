@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'view_library.dart';
+import 'package:pages/library/view_library.dart';
 
 class LibraryThumbnail extends StatelessWidget {
   final String _libraryName;
