@@ -1,5 +1,6 @@
 import 'package:english_words/english_words.dart';
-import '../library/library.dart';
+import 'package:pages/library/library.dart';
+import 'package:pages/book/book.dart';
 
 class DummyStore {
   static Library getLibrary() {
@@ -15,5 +16,10 @@ class DummyStore {
         generateWordPairs().take(1).toList().removeLast().asPascalCase));
     }
     return libList;
+  }
+  
+  // This should eventually retrieve data via http (if available  ).
+  static Book getBook(String bookName) {
+    return new Book(bookName, 400, "Alessandro Del Piero" );
   }
 }

@@ -4,7 +4,7 @@ import 'package:pages/library/library_thumbnail.dart';
 import 'package:pages/library/library.dart';
 
 // I'll use dummy store while in dev stage/mode.
-import 'package:pages/dummy_stuff/dummy_store.dart';
+import 'package:pages/dummy_store/dummy_store.dart';
 
 void main() => runApp(PagesApp());
 
