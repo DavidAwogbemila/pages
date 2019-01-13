@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../book/book.dart';
+import '../book/view_book.dart';
 
 class ViewLibrary extends StatelessWidget {
   final String libraryName;
@@ -12,13 +13,23 @@ class ViewLibrary extends StatelessWidget {
      List<Book> libraryBooks = getBooksInLibrary(this.libraryName);
     return Scaffold(
         appBar: AppBar(title: Text(this.libraryName)),
-        body: ListView.builder(
+        body: ListView.separated(
             padding: EdgeInsets.all(8.0),
-            itemExtent: 20.0,
+            itemCount: libraryBooks.length,
+            separatorBuilder: (BuildContext context, int index ) {
+              return Divider();
+            },
             itemBuilder: (BuildContext context, int index) {
-              if (index < libraryBooks.length) {
-                return Text(libraryBooks[index].title);
-              }
+              return RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ViewBook(libraryBooks[index].title)
+                    )
+                  );
+                },
+                child:Text(libraryBooks[index].title)
+              );
             }));
   }
 
