@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 
-import '../book/book.dart';
-import '../book/view_book.dart';
+import 'package:pages/library/library.dart';
+import 'package:pages/book/book.dart';
+import 'package:pages/book/view_book.dart';
 
 class ViewLibrary extends StatelessWidget {
-  final String libraryName;
+  final Library library;
 
-  ViewLibrary(this.libraryName);
+  ViewLibrary(this.library);
 
   @override
   Widget build(BuildContext context) {
-    List<Book> libraryBooks = getBooksInLibrary(this.libraryName);
+    List<Book> libraryBooks = getBooksInLibrary(this.library.getDisplayName());
     return Scaffold(
         appBar: AppBar(title: Text("Pages")),
         body: Column(children: <Widget>[
           ConstrainedBox(
             constraints: const BoxConstraints.expand(height: 75.0),
-            child: Card(child: Text(this.libraryName)),
+            child: Card(child: Text(this.library.getDisplayName())),
           ),
           Expanded(
               child: ListView.separated(
@@ -32,9 +33,9 @@ class ViewLibrary extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      ViewBook(libraryBooks[index].title)));
+                                      ViewBook(libraryBooks[index])));
                         },
-                        child: Text(libraryBooks[index].title));
+                        child: Text(libraryBooks[index].getTitle()));
                   }))
         ]));
   }

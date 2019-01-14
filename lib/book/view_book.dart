@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pages/book/book.dart';
 
 class ViewBook extends StatelessWidget {
-  final String bookName;
-  ViewBook(this.bookName);
+  final Book book;
+  ViewBook(this.book);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class ViewBook extends StatelessWidget {
         body: Column(children: <Widget>[
           ConstrainedBox(
             constraints: const BoxConstraints.expand(height: 75.0),
-            child: Card(child: Text(this.bookName)),
+            child: Card(child: Text(this.book.getTitle())),
           )
         ]));
   }

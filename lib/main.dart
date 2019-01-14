@@ -24,9 +24,17 @@ class HomePageState extends State<HomePage> {
   List<Library> libList = List<Library>();
   List<LibraryThumbnail> thumbnailList = List<LibraryThumbnail>();
 
+  HomePageState() {
+    libList = DummyStore.getListOfLibraries(5);
+    for (var i = 0; i < libList.length; i++) {
+      print(libList[i].getDisplayName());
+      thumbnailList.add(new LibraryThumbnail(libList[i]));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new LibrariesCatalogView();
+    return new LibrariesCatalogView(this.thumbnailList);
   }
 }
 
@@ -36,15 +44,12 @@ class HomePage extends StatefulWidget {
 }
 
 class LibrariesCatalogView extends StatelessWidget {
+  final List<LibraryThumbnail> thumbnailList;
+
+  LibrariesCatalogView(this.thumbnailList);
+
   @override
   Widget build(BuildContext context) {
-    List<Library> libList = List<Library>();
-    List<LibraryThumbnail> thumbnailList = List<LibraryThumbnail>();
-    libList = DummyStore.getListOfLibraries(5);
-    for (var i = 0; i < libList.length; i++) {
-      print(libList[i].name);
-      thumbnailList.add(new LibraryThumbnail(libList[i].name));
-    }
     return Scaffold(
         appBar: AppBar(
           title: Text("Pages"),
