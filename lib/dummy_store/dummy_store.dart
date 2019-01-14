@@ -13,13 +13,14 @@ class DummyStore {
   static getBooksInLibrary(String libraryName) {
     List<Book> listOfBooks = List<Book>();
 
-    listOfBooks.add( new Book("futbol", 750, "Alessandro Del Piero" ));
-    listOfBooks.add( new Book("fussbol", 500, "Oliver Khan" ));
-    listOfBooks.add( new Book("futbol", 1000, "Ronaldo Ronaldinho de Assis Moreira" ));
+    listOfBooks.add( new Book("Calcio", 750, "Alessandro Del Piero" ));
+    listOfBooks.add( new Book("Fußball", 500, "Oliver Khan" ));
+    listOfBooks.add( new Book("Futebol", 1000, "Ronaldo Ronaldinho de Assis Moreira" ));
 
     return listOfBooks;
   }
 
+  // This should eventually retrieve data via http (if available).
   static List<Library> getListOfLibraries(int nr) {
     List<Library> libList = new List<Library>();
     for (int i = 0; i < nr; i++) {

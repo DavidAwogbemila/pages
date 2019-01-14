@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pages/library/library.dart';
 import 'package:pages/book/book.dart';
 import 'package:pages/book/view_book.dart';
+import 'package:pages/dummy_store/dummy_store.dart';
 
 class ViewLibrary extends StatelessWidget {
   final Library library;
@@ -11,7 +12,7 @@ class ViewLibrary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Book> libraryBooks = getBooksInLibrary(this.library.getDisplayName());
+    List<Book> libraryBooks = DummyStore.getBooksInLibrary(this.library.getDisplayName());
     return Scaffold(
         appBar: AppBar(title: Text("Pages")),
         body: Column(children: <Widget>[
@@ -38,14 +39,5 @@ class ViewLibrary extends StatelessWidget {
                         child: Text(libraryBooks[index].getTitle()));
                   }))
         ]));
-  }
-
-  static List<Book> getBooksInLibrary(String libraryName) {
-    List<Book> listOfBooks = [
-      new Book("Just for fun", 250, "L. Torvalds"),
-      new Book("Crime and Punishment", 250, "Dostoyervsky"),
-      new Book("The Richest Man in Babylon", 250, "John S. Clayton")
-    ];
-    return listOfBooks;
   }
 }
